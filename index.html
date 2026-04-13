@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdminPortal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <section id="screen-login" class="screen active">
+    <div class="auth-card">
+      <div class="auth-logo">AdminPortal</div>
+      <p class="auth-subtitle">Sign in to your account</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
+        </div>
+        <div id="login-error" class="error-message" hidden>Invalid username or password.</div>
+        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 2FA Screen -->
+  <section id="screen-2fa" class="screen">
+    <div class="auth-card">
+      <div class="auth-logo">AdminPortal</div>
+      <p class="auth-subtitle">Two-Factor Authentication</p>
+      <p class="auth-hint">Enter the 6-digit code from your authenticator app.</p>
+      <form id="twofa-form">
+        <div class="form-group">
+          <label for="twofa-code">Verification Code</label>
+          <input type="text" id="twofa-code" maxlength="6" inputmode="numeric" pattern="[0-9]*" placeholder="000000" autocomplete="one-time-code" required>
+        </div>
+        <div id="twofa-error" class="error-message" hidden>Invalid verification code.</div>
+        <button type="submit" class="btn btn-primary btn-full">Verify</button>
+      </form>
+      <button id="twofa-back" class="btn-link">Back to login</button>
+    </div>
+  </section>
+
+  <!-- Dashboard Screen -->
+  <section id="screen-dashboard" class="screen">
+    <header class="dashboard-header">
+      <div class="header-brand">AdminPortal</div>
+      <div class="header-user">
+        <div class="avatar">AD</div>
+        <span class="header-username">Admin User</span>
+        <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <h1 class="dashboard-title">Dashboard</h1>
+
+      <div id="stats-grid" class="stats-grid"></div>
+
+      <div class="card">
+        <h2 class="card-title">Monthly Revenue</h2>
+        <div id="chart" class="bar-chart"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Recent Transactions</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="transactions-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
